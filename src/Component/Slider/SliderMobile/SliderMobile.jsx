@@ -66,7 +66,7 @@ const ProductMobile = () => {
     },
   ];
   return (
-    <div className="w-full py-3">
+    <div className="w-full py-2">
       {sliderData.map((row) => (
         <div key={row.id} className="overflow-x-auto scrollbar-none px-4 mb-4">
           <div className="flex gap-2">
@@ -90,7 +90,7 @@ const ProductMobile = () => {
           </div>
 
           {/* TYPE 'M' ROW LAYOUT */}
-          <div className="flex gap-10 py-2 items-center">
+          <div className="flex gap-10 items-center">
             {row.type === "M" &&
               row.img.map((image, imgIndex) => (
                 <div key={imgIndex} className="shrink-0 text-center">
