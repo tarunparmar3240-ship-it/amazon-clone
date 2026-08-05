@@ -1,17 +1,15 @@
 import React from "react";
 import HeroBanner from "../../Component/HeroBanner/HeroBanner";
 import SliderComponent from "react-slick";
-import ProductGrid from "../../Component/Product/ProductDesktop/ProductDesktop";
-import ProductSlider from "../../Component/Slider/ProductSlider/ProductSlider";
 import Product from "../../Component/Product/Product";
+import Slider from "../../Component/Slider/Slider";
 
 const Home = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <HeroBanner />
-      {/* <ProductGrid /> */}
       <Product />
-      <ProductSlider />
+      <Slider />
     </div>
   );
 };
