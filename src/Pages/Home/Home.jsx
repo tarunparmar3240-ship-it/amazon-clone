@@ -5,6 +5,8 @@ import Product from "../../Component/Product/Product";
 import Slider from "../../Component/Slider/Slider";
 import CategoryGrid from "../../Component/Category/CategoryGrid/CategoryGrid";
 import Category from "../../Component/Category/Category";
+import CreateCategory from "../../Component/CreateCategory/CreateCategory";
+import CategoryList from "../../Component/CreateCategory/CategoryList";
 
 const Home = () => {
   return (
@@ -13,6 +15,8 @@ const Home = () => {
       <Product />
       <Slider />
       <Category />
+      <CreateCategory />
+      <CategoryList />
     </div>
   );
 };

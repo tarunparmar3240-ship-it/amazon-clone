@@ -56,15 +56,15 @@ const ProductMobile = () => {
   ];
   return (
     <div className="flex overflow-x-auto pt-2 pl-4 scrollbar-none gap-3">
-      {mobileBanners.map((item) => (
-        <div key={item.id} className="flex-shrink-0">
+      {mobileBanners.map((item, index) => (
+        <div key={index} className="flex-shrink-0">
           {item.type === "video" && (
             <div className="relative flex gap-2">
               {item.video.map((vid, index) => {
                 const play = [1];
                 const isBlack = play.includes(index);
                 return (
-                  <div>
+                  <div key={index} >
                     <h1 className="absolute p-2 text-4xl font-bold text-white">
                       {item.title[index]}
                     </h1>
@@ -93,7 +93,7 @@ const ProductMobile = () => {
                 const blackIndices = [2, 3, 5, 6, 7];
                 const isBlack = blackIndices.includes(index);
                 return (
-                  <div className="flex relative gap-3">
+                  <div key={index} className="flex relative gap-3">
                     <h1
                       className={`absolute top-2 left-4 z-10 font-bold text-4xl rounded ${isBlack ? "text-black" : "text-white"}`}
                     >

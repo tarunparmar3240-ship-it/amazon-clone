@@ -2,7 +2,7 @@ import React from "react";
 
 const CategoryGrid = ({ categoryData, col = 2 }) => {
   return (
-    <div className="w-full px-6 py-5">
+    <div className="w-full px-6 py-5 lg:hidden">
       {categoryData.map((item) => (
         <div key={item.id}>
           <h1 className="text-xl font-semibold py-3">{item.title}</h1>

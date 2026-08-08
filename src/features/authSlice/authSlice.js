@@ -9,7 +9,7 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const payload = {
-        role: "USER",
+        role: userData.role || "USER",
         ...userData,
       };
 
@@ -17,30 +17,35 @@ export const registerUser = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || "Registration failed"
+        error.response?.data?.message || "Registration failed",
       );
     }
-  }
+  },
 );
 
 export const currentUser = createAsyncThunk(
-  'auth/resgisterUser',
-  async({rejectWithValue}) => {
+  "auth/currentUser",
+  async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("accessToken");
-      const userName = localStorage.setItem("username", data.user.username);
-      if(!token) return null;
+      // const userName = localStorage.setItem("username", data.user.username);
+      if (!token) return rejectWithValue("No token found");
+
+      // if (!token) return null;
+
+
       const response = await axios.get(`${BASE_URL}/current-user`, {
         headers: {
           Authorization: `Bearer ${token}`,
-        }
-      })
+        },
+      });
+      localStorage.setItem("username", response.data.data.username);
       return response.data.data;
     } catch (error) {
       throw error;
     }
-  }
-)
+  },
+);
 
 // 2. LOGIN USER THUNK
 export const loginUser = createAsyncThunk(
@@ -59,11 +64,9 @@ export const loginUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data?.message || "Login failed"
-      );
+      return rejectWithValue(error.response?.data?.message || "Login failed");
     }
-  }
+  },
 );
 
 const initialState = {
@@ -114,7 +117,7 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        if(action.payload) {
+        if (action.payload) {
           state.user = action.payload;
         }
       })

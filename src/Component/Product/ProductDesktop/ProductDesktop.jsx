@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import airConditioners from "../../../assets/air-Conditioners.jpg";
 import refrigerators from "../../../assets/Refrigerators.jpg";
 import microwaves from "../../../assets/Microwaves.jpg";
@@ -18,7 +18,6 @@ import bedsheet from "../../../assets/bedsheets.jpg";
 import curtains from "../../../assets/curtians.jpg";
 import ironing from "../../../assets/Ironing.jpg";
 import decor from "../../../assets/decor.jpg";
-
 const ProductGrid = () => {
   const cardsData = [
     {

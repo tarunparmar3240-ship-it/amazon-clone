@@ -5,15 +5,15 @@ import c2 from "../../assets/c2.jpg";
 import c3 from "../../assets/c3.jpg";
 import c4 from "../../assets/c4.jpg";
 
-import col1 from '../../assets/col1.webp';
-import col2 from '../../assets/col2.webp';
-import col3 from '../../assets/col3.webp';
-import col4 from '../../assets/col4.webp';
-import col5 from '../../assets/col5.jpg';
-import col6 from '../../assets/col6.webp';
-import col7 from '../../assets/col7.webp';
-import col8 from '../../assets/col8.webp';
-import col9 from '../../assets/col9.webp';
+import col1 from "../../assets/col1.webp";
+import col2 from "../../assets/col2.webp";
+import col3 from "../../assets/col3.webp";
+import col4 from "../../assets/col4.webp";
+import col5 from "../../assets/col5.jpg";
+import col6 from "../../assets/col6.webp";
+import col7 from "../../assets/col7.webp";
+import col8 from "../../assets/col8.webp";
+import col9 from "../../assets/col9.webp";
 
 const Category = () => {
   const Data2x2 = [
