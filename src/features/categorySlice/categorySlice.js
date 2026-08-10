@@ -9,7 +9,7 @@ export const getCategory = createAsyncThunk(
         "https://api.freeapi.app/api/v1/ecommerce/categories",
       );
       // return response.data.data.categories;
-      console.log("Me Get Huu", response);
+      // console.log("Me Get Huu", response);
       return response.data.data.categories;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message);
@@ -36,7 +36,7 @@ export const postCategory = createAsyncThunk(
           },
         },
       );
-      console.log("Me Post Huu", response);
+      // console.log("Me Post Huu", response);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(
@@ -74,7 +74,6 @@ export const categorySlice = createSlice({
       .addCase(postCategory.fulfilled, (state, action) => {
         state.loading = false;
         state.categories.push(action.payload);
-        // state.categories.push(action.payload.data);
       })
       .addCase(postCategory.rejected, (state, action) => {
         state.error = action.payload;
@@ -83,3 +82,4 @@ export const categorySlice = createSlice({
 });
 
 export default categorySlice.reducer;
+

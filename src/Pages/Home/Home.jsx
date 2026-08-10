@@ -7,6 +7,8 @@ import CategoryGrid from "../../Component/Category/CategoryGrid/CategoryGrid";
 import Category from "../../Component/Category/Category";
 import CreateCategory from "../../Component/CreateCategory/CreateCategory";
 import CategoryList from "../../Component/CreateCategory/CategoryList";
+import ProductList from "../../Component/Product/ProductList/ProductList";
+import CreateProduct from "../../Component/Product/CreateProduct/CreateProduct";
 
 const Home = () => {
   return (
@@ -17,6 +19,8 @@ const Home = () => {
       <Category />
       <CreateCategory />
       <CategoryList />
+      <CreateProduct />
+      <ProductList />
     </div>
   );
 };
