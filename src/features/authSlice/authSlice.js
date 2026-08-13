@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import api from "../../api/api"; // Axios Interceptor Instance
 
 const BASE_URL = "https://api.freeapi.app/api/v1/users";
 
@@ -13,7 +14,7 @@ export const registerUser = createAsyncThunk(
         ...userData,
       };
 
-      const response = await axios.post(`${BASE_URL}/register`, payload);
+      const response = await api.post(`${BASE_URL}/register`, payload);
       return response.data;
     } catch (error) {
       return rejectWithValue(
@@ -23,18 +24,15 @@ export const registerUser = createAsyncThunk(
   },
 );
 
+
 export const currentUser = createAsyncThunk(
   "auth/currentUser",
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("accessToken");
-      // const userName = localStorage.setItem("username", data.user.username);
       if (!token) return rejectWithValue("No token found");
 
-      // if (!token) return null;
-
-
-      const response = await axios.get(`${BASE_URL}/current-user`, {
+      const response = await api.get(`${BASE_URL}/current-user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,7 +50,7 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${BASE_URL}/login`, credentials);
+      const response = await api.post(`${BASE_URL}/login`, credentials);
       const data = response.data.data;
 
       // Token ko LocalStorage me save karna
@@ -68,6 +66,7 @@ export const loginUser = createAsyncThunk(
     }
   },
 );
+
 
 const initialState = {
   user: null,
@@ -117,11 +116,14 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        if (action.payload) {
-          state.user = action.payload;
-        }
+          if (action.payload) {
+            state.user = action.payload;
+          }
       })
-      .addCase(currentUser.rejected, (state) => {
+      .addCase(currentUser.rejected, (state,action) => {
+        state.isLoading = false;
+        state.isAuthenticated = false;
+        state.user = null;
         state.isError = action.payload;
       })
 

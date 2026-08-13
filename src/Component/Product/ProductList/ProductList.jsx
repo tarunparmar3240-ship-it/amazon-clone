@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../../features/ProductSlice/ProductSlice";
+import { useNavigate } from "react-router-dom";
 
 const ProductList = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.product);
 
@@ -11,22 +13,19 @@ const ProductList = () => {
   }, [dispatch]);
 
   if (loading) return <h2>Loading products...</h2>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
-
+  if (error) return <p className="text-red-500">{error}</p>;
+  
   return (
-    <div style={{ margin: "20px 0" }}>
+    <div className="my-5">
       <h3>All Products List</h3>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      <div className="flex flex-wrap gap-5">
         {products && products.length > 0 ? (
           products.map((product) => (
-            <div
-              key={product._id}
-              style={{ border: "1px solid #ccc", padding: "10px", width: "200px" }}
-            >
+            <div onClick={() => navigate(`/product/${product._id}`)} key={product._id} className="border p-4 w-50">
               <img
                 src={product.mainImage?.url}
                 alt={product.name}
-                style={{ width: "100%", height: "150px", objectFit: "cover" }}
+                className="w-100 h-37 object-cover"
               />
               <h3>{product.name}</h3>
               <p>Price: ₹{product.price}</p>

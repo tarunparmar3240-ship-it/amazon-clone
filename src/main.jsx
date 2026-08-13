@@ -3,9 +3,10 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { Provider } from "react-redux";
+import { RouterProvider } from "react-router-dom";
 import { store } from "./store/store.js";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "./Component/NotFoundPage/NotFoundPage.jsx";
+import router from './Routes/AppRouter.jsx';
 
 // const router = createBrowserRouter([
 //   {path: '/', element: <App />},
@@ -14,15 +15,9 @@ import NotFoundPage from "./Component/NotFoundPage/NotFoundPage.jsx";
 // ]);
 
 createRoot(document.getElementById("root")).render(
-  // <StrictMode>
-  //   <Provider store={store}>
-  //     <RouterProvider router={router} />
-  //   </Provider>
-  // </StrictMode>,
-
-    <StrictMode>
+  <StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>,
 );

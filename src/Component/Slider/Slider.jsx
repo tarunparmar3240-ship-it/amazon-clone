@@ -9,4 +9,4 @@ const Slider = () => {
     return isMobile ? <SliderMobile /> : <SliderDesktop />;
 }
 
-export default Slider
+export default Slider;
