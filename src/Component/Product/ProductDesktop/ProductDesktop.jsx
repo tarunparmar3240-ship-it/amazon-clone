@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import airConditioners from "../../../assets/air-Conditioners.jpg";
+import airConditioners from "../../../assets/air-conditioners.jpg";
 import refrigerators from "../../../assets/Refrigerators.jpg";
 import microwaves from "../../../assets/Microwaves.jpg";
 import washingMachine from "../../../assets/washing-machine.jpg";
