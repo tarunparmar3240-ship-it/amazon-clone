@@ -13,7 +13,8 @@ import { Link } from "react-router-dom";
 
 const NavbarBelt = () => {
   const { user } = useSelector((state) => state.auth);
-  const username = user?.username || localStorage.getItem("username");
+  // const username = user?.username || localStorage.getItem("username");
+  const username = user?.username || "Guest";
   const boxHover =
     "border border-transparent hover:border-white px-2 py-2 cursor-pointer flex itmes-center";
   const [selectedLocation, setSelectedLocation] = useState("Select Location");

@@ -6,8 +6,9 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { token } = useSelector((state) => state.auth);
-  const localToken = localStorage.getItem("accessToken");
-  const isLogged = localToken;
+  // const localToken = localStorage.getItem("accessToken");
+  // const isLogged = localToken;
+  const isLogged = token;
 
   return (
     <div>

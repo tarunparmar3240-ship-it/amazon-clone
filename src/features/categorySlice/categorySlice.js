@@ -18,7 +18,7 @@ export const postCategory = createAsyncThunk(
   "/category/postCategory",
   async (categoryName, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("accessToken");
+      // const token = localStorage.getItem("accessToken");
       const response = await api.post("/ecommerce/categories", {
         name: categoryName,
       });

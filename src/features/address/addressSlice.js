@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+// import axios from "axios";
+import api from "../../api/api";
 
 const BASE_URL = "https://api.freeapi.app/api/v1";
 
@@ -13,12 +14,12 @@ export const getAddress = createAsyncThunk(
   "address/addressSlice",
   async (pincode, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("accessToken");
-      const response = await axios.get(`${BASE_URL}/ecommerce/addresses`, {
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json",
-        }
+      // const token = localStorage.getItem("accessToken");
+      const response = await api.get(`${BASE_URL}/ecommerce/addresses`, {
+        // headers: {
+        //     "Authorization": `Bearer ${token}`,
+        //     "Content-Type": "application/json",
+        // }
       });
       const data = response.data.data.addresses;
       return data;

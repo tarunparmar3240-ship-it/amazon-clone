@@ -75,7 +75,7 @@ const ProductGrid = () => {
               {card.items.map((subItem, idx) => (
                 <div key={idx} className="mb-2 cursor-pointer group">
                     <div className="mb-1 overflow-hidden">
-                      <img 
+                      <img
                         src={subItem.img} 
                         alt={subItem.name}
                         className={`w-full ${subItem.customClass}`}
