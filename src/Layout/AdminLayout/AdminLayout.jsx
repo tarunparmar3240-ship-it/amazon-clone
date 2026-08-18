@@ -18,7 +18,7 @@ const AdminLayout = () => {
       {/* Dynamic Admin Content Slot */}
       <main className="flex-1 p-5 bg-gray-50">
         <header className="mb-5 border-b border-gray-300 pb-2.5">
-          <h2 className="text-xl font-bold">Admin Control Panel</h2>
+          <h2 className="text-xl font-bold">Admin Control</h2>
         </header>
         <Outlet />
       </main>

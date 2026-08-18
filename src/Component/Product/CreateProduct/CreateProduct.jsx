@@ -16,6 +16,7 @@ const CreateProduct = () => {
     description: "",
     price: "",
     category: "",
+    stock: "",
     mainImage: null,
   });
 
@@ -37,7 +38,7 @@ const CreateProduct = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // ◄◄ Stops URL query params & page refresh
+    e.preventDefault();
     setSuccessMessage("");
 
     const data = new FormData();
@@ -45,6 +46,7 @@ const CreateProduct = () => {
     data.append("description", formData.description);
     data.append("price", formData.price);
     data.append("category", formData.category);
+    data.append("stock", formData.stock);
     if (formData.mainImage) {
       data.append("mainImage", formData.mainImage);
     }
@@ -53,12 +55,13 @@ const CreateProduct = () => {
       .unwrap()
       .then(() => {
         setSuccessMessage("Product successfully created!");
-        dispatch(getProduct()); // Refresh product list after creation
+        dispatch(getProduct());
         setFormData({
           name: "",
           description: "",
           price: "",
           category: "",
+          stock: "",
           mainImage: null,
         });
       })
@@ -101,6 +104,18 @@ const CreateProduct = () => {
             type="number"
             name="price"
             value={formData.price}
+            onChange={handleChange}
+            required
+            className="w-100 p-2"
+          />
+        </div>
+
+        <div style={{ marginBottom: "10px" }}>
+          <label>Stock:</label>
+          <input
+            type="number"
+            name="stock"
+            value={formData.stock}
             onChange={handleChange}
             required
             className="w-100 p-2"

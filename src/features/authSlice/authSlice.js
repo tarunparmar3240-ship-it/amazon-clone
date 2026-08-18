@@ -4,7 +4,6 @@ import api from "../../api/api"; // Axios Interceptor Instance
 
 const BASE_URL = "https://api.freeapi.app/api/v1/users";
 
-// 1. REGISTER USER THUNK
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData, { rejectWithValue }) => {
@@ -23,7 +22,6 @@ export const registerUser = createAsyncThunk(
     }
   },
 );
-
 
 export const currentUser = createAsyncThunk(
   "auth/currentUser",
@@ -45,7 +43,6 @@ export const currentUser = createAsyncThunk(
   },
 );
 
-// 2. LOGIN USER THUNK
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (credentials, { rejectWithValue }) => {
@@ -66,7 +63,6 @@ export const loginUser = createAsyncThunk(
     }
   },
 );
-
 
 const initialState = {
   user: null,
@@ -116,11 +112,11 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.isLoading = false;
-          if (action.payload) {
-            state.user = action.payload;
-          }
+        if (action.payload) {
+          state.user = action.payload;
+        }
       })
-      .addCase(currentUser.rejected, (state,action) => {
+      .addCase(currentUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isAuthenticated = false;
         state.user = null;

@@ -17,22 +17,22 @@ const ProductList = () => {
   
   return (
     <div className="my-5">
-      <h3>All Products List</h3>
-      <div className="flex flex-wrap gap-5">
+      <h3 className="text-xl py-2">All Products List</h3>
+      <div className="flex overflow-x-auto scrollbar-none gap-5">
         {products && products.length > 0 ? (
           products.map((product) => (
-            <div onClick={() => navigate(`/product/${product._id}`)} key={product._id} className="border p-4 w-50">
+            <div onClick={() => navigate(`/product/${product._id}`)} key={product._id} className="shrink-0">
               <img
                 src={product.mainImage?.url}
                 alt={product.name}
-                className="w-100 h-37 object-cover"
+                className=""
               />
               <h3>{product.name}</h3>
               <p>Price: ₹{product.price}</p>
             </div>
           ))
         ) : (
-          <p>Koi Product Nahi Mila!</p>
+          <p>Koi Product Nahi Mila</p>
         )}
       </div>
     </div>

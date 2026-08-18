@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import prod1 from "../../../assets/prod1.jpg";
 import prod2 from "../../../assets/prod2.jpg";
 import prod3 from "../../../assets/prod3.jpg";
@@ -21,8 +21,19 @@ import prod19 from "../../../assets/prod19.jpg";
 import prod20 from "../../../assets/prod20.jpg";
 import { FaChevronRight } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getProduct } from '../../../features/ProductSlice/ProductSlice';
 
 const ProductSlider = () => {
+
+  const dispatch = useDispatch();
+  const {products} = useSelector((state) => state.product)
+
+  useEffect(() => {
+    dispatch(getProduct())
+  },[])
+
   const sliderRef = useRef(null);
   const sliderData = [
     {

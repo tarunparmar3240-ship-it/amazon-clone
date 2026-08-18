@@ -9,7 +9,7 @@ const LocationModal = ({ isOpen, onClose, setSelectedLocation }) => {
   const handleApplyPincode = async () => {
     if (!pincode.trim()) return;
     try {
-      // Free Indian Postal API se location lookup
+      // free india postal api
       const response = await fetch(
         `https://api.postalpincode.in/pincode/${pincode}`,
       );
@@ -40,9 +40,8 @@ const LocationModal = ({ isOpen, onClose, setSelectedLocation }) => {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4 transition-opacity"
+      className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 transition-opacity"
     >
-      {/* Inner Modal Box */}
       <div
         onClick={(e) => e.stopPropagation()}
         className="bg-[#232f3e] text-white w-full max-w-md rounded-md shadow-2xl p-5 relative border border-gray-700"

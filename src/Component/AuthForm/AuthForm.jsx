@@ -27,7 +27,6 @@ const AuthForm = () => {
     dispatch(clearError());
 
     if (isLogin) {
-      // 1. Direct Login
       dispatch(
         loginUser({
           username: formData.username,
@@ -35,7 +34,7 @@ const AuthForm = () => {
         }),
       );
     } else {
-      // 2. AUTO-LOGIN FLOW: Pehle Register karo, fir turant Background mein Login karo
+      //Auto-login flow
       const result = await dispatch(
         registerUser({
           username: formData.username,
@@ -57,20 +56,6 @@ const AuthForm = () => {
     }
   };
 
-  // if (token) {
-  //   return (
-  //     <div className="text-center mt-20">
-  //       <h1 className="text-3xl font-bold text-green-500 mb-4">
-  //         🎉 Welcome to Amazon Clone!
-  //       </h1>
-  //       <p className="text-gray-300">
-  //         Aapka account successfully ban chuka hai aur aap direct main page par
-  //         aa gaye ho.
-  //       </p>
-  //     </div>
-  //   );
-  // }
-
   return (
     <div className="fixed z-50 bg-black/60 inset-0 flex justify-center items-center">
       <div className="max-w-md mx-auto p-6 shadow-md rounded-lg border bg-white">
@@ -78,7 +63,6 @@ const AuthForm = () => {
           {isLogin ? "Login Account" : "Create New Account"}
         </h2>
 
-        {/* 🔴 Error Message */}
         {isError && (
           <p className="p-3 mb-4 text-sm text-red-600 bg-red-100 rounded">
             {isError}
@@ -97,7 +81,7 @@ const AuthForm = () => {
             required
           />
 
-          {/* Email - Only in Register mode */}
+          {/* Email */}
           {!isLogin && (
             <input
               type="email"

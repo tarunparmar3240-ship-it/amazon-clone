@@ -8,13 +8,14 @@ import AdminLayout from "../Layout/AdminLayout/AdminLayout.jsx";
 //Customer Pages Import
 import HomePage from "../Pages/Customer/HomePage/HomePage.jsx";
 import ProductDetailPage from "../Pages/Customer/ProductDetailPage/ProductDetailPage.jsx";
-import NotFoundPage from '../Component/NotFoundPage/NotFoundPage.jsx';
+import NotFoundPage from "../Component/NotFoundPage/NotFoundPage.jsx";
 
 // Admin Pages Import
 // import AdminDashboardPage from "../Pages/Admin/AdminDashboardPage";
 import AdminDashboardPage from "../Pages/Admin/AdminDashboardPage/AdminDashboardPage.jsx";
 import AddProductPage from "../Pages/Admin/AddProductPage/AddProductPage.jsx";
 import AddCategoryPage from "../Pages/Admin/AddCategoryPage/AddCategoryPage.jsx";
+import CartProduct from "../Component/CartProduct/CartProduct.jsx";
 
 // Customer StoreFront Branch (MainLayout Wrapper)
 const router = createBrowserRouter([
@@ -23,14 +24,17 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        index: true, //URL '/' hone par default child render hogo
+        index: true, //URL '/' hone par default child render hoga
         element: <HomePage />,
       },
       {
-        path: "/product/:id", //URL 'product/123' -> Dynamic ID route
+        path: "/product/:id", //URL -> Dynamic ID route
         element: <ProductDetailPage />,
       },
-      //Catch-all route hamesha sabse last me rakha jata hai.
+      {
+        path: "/cart",
+        element: <CartProduct />,
+      },
       {
         path: "*",
         element: <NotFoundPage />,
@@ -38,7 +42,6 @@ const router = createBrowserRouter([
     ],
   },
 
-  //Admin Panel Branch(AdminLayout Wrapper)
   {
     path: "/admin",
     element: <AdminLayout />,

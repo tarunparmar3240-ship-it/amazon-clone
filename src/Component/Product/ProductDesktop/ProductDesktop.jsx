@@ -67,7 +67,7 @@ const ProductGrid = () => {
   ];
   return (
     <div className="relative z-20 max-w-[1500px] mx-auto px-4 -mt-89">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div className="flex gap-5">
         {cardsData.map((card) => (  
           <div key={card.id} className="bg-white p-4 flex flex-col shadow-md">
             <h2 className="text-xl font-bold text-gray-900 mb-3">{card.title}</h2>
@@ -78,7 +78,6 @@ const ProductGrid = () => {
                       <img 
                         src={subItem.img} 
                         alt={subItem.name}
-                        // className="w-full object-cover group-hover:scale-105 transition-transform duration-200" 
                         className={`w-full ${subItem.customClass}`}
                     />
                     </div>
@@ -86,9 +85,6 @@ const ProductGrid = () => {
                 </div>
               ))}
             </div>
-            {/* <a href="#" className="text-xs text-cyan-700 font-semibold hover:text-orange-700 hover:underline mt-3">
-                {card.linkText}
-            </a> */}
           </div>
         ))}
       </div>

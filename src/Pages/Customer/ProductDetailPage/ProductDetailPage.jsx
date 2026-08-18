@@ -1,62 +1,66 @@
 import React, { useEffect } from "react";
 import ProductList from "../../../Component/Product/ProductList/ProductList";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getProductById } from "../../../features/ProductSlice/ProductSlice";
+import { addItemToCart } from "../../../features/cartSlice/cartSlice";
 
 const ProductDetailPage = () => {
-  //Step 3 useParams hook URl ki value ki active ID Read Karna
   const { id } = useParams();
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  //Redux store se Product aur loading status nikalna
-  const {products, loading} = useSelector((state) => state.product);
+  // Redux se singleProduct aur loading read karein
+  const { singleProduct, loading } = useSelector((state) => state.product);
 
-  const singleProduct = products?.find((item) => item._id === id);
+  const handleAddToCart = () => {
+    if (!singleProduct?._id && !singleProduct?.id) return;
 
+    dispatch(
+      addItemToCart({
+        productId: singleProduct._id || singleProduct.id,
+        quantity: 1,
+      }),
+    );
+  };
 
   useEffect(() => {
-    if(loading && products && products.length > 0 && !singleProduct) {
-      navigate('/404'); // Aapka catch-all / not-found route
+    if (id) {
+      dispatch(getProductById(id));
     }
-  }, [loading, products, singleProduct, navigate]);
+  }, [id, dispatch]);
 
-  if(loading) {
-    return 
-    <div className="p-10 text-center font-bold">
-      Loading...
-    </div>
+  if (loading) {
+    return <div className="p-10 text-center font-bold">Loading...</div>;
   }
- 
+
   if (!singleProduct) {
     return (
       <div className="p-10 text-center text-xl font-bold">
-      Invalid Product ID
+        Invalid Product ID
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Left Column: product Large Image */}
-      <div className="flex justify-center border p-4 rounded-lg">
+    <div className="max-w-6xl flex mx-auto py-10 px-4 flex-col lg:flex-row">
+      <div className="w-full">
         <img
           src={singleProduct.mainImage?.url}
           alt={singleProduct.title}
           className="w-96 h-96 object-contain"
         />
       </div>
-
-      <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold">{singleProduct.title}</h1>
-        <p className="text-gray-600 leading-relaxed">
-          {singleProduct.description}
-        </p>
-        <div className="text-3xl font-bold text-gray-900">
-          ₹{singleProduct.price}
+      <div className="w-full flex flex-col">
+        <div className="border-b border-gray-400">
+          <h1 className="text-3xl">{singleProduct.name}</h1>
+          <p className="text-md">{singleProduct.description}</p>
         </div>
-
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-full w-fit shadow-md transition-all">
-          Add to Cart
+        <p className="py-2 px-3 text-2xl">₹{singleProduct.price}</p>
+        <button
+          onClick={handleAddToCart}
+          className="text-2xl bg-yellow-300 py-3 px-8 rounded-full w-fit mx-auto my-10 shadow-md transition-all"
+        >
+          {loading ? "Adding..." : "Add to Cart"}
         </button>
       </div>
     </div>

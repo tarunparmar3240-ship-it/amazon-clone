@@ -9,6 +9,7 @@ import { BiCart, BiUser } from "react-icons/bi";
 import authSlice from "../../../features/authSlice/authSlice";
 import { useSelector } from "react-redux";
 import LocationModel from "../../LocationModel/LocationModel";
+import { Link } from "react-router-dom";
 
 const NavbarBelt = () => {
   const { user } = useSelector((state) => state.auth);
@@ -17,6 +18,8 @@ const NavbarBelt = () => {
     "border border-transparent hover:border-white px-2 py-2 cursor-pointer flex itmes-center";
   const [selectedLocation, setSelectedLocation] = useState("Select Location");
   const [isModalOpen, setIsModlaOpen] = useState(false);
+
+  const { items } = useSelector((state) => state.cart);
 
   return (
     <div className="w-full bg-[#131921] text-white min-h-15 flex py-1 flex-col md:flex-row md:py-0 items-center justify-between px-2 gap-2">
@@ -98,13 +101,13 @@ const NavbarBelt = () => {
           <span className="-mt-1 text-sm font-bold">&Orders</span>
         </div>
 
-        <div className={`${boxHover}`}>
+        <Link to={"/cart"} className={`${boxHover}`}>
           <div className="flex items-center flex-col">
-            <span className="text-lg  text-orange-400">0</span>
+            <span className="text-lg  text-orange-400">{items?.length || 0}</span>
             <FaCartShopping className="-mt-1 text-xl mr-1" />
           </div>
           <p className="mt-6 text-sm font-medium">Cart</p>
-        </div>
+        </Link>
       </div>
       <div className="w-screen -mx-2 bg-[#232f3e] flex md:hidden items-center px-4 py-2 text-white gap-2 border-t border-[#3a4553]">
         <SlLocationPin className="text-xl font-bold" />

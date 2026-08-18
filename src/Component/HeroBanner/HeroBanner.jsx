@@ -12,7 +12,6 @@ import { SlArrowLeft } from "react-icons/sl";
 import { SlArrowRight } from "react-icons/sl";
 
 const HeroBanner = () => {
-  //Slider ko control karne ke liye ke useRef Banaiye
   const sliderRef = useRef(null);
   const Slider = SliderComponent.default || SliderComponent;
   
@@ -26,32 +25,8 @@ const HeroBanner = () => {
     autoplaySpeed: 4000,
   };
 
-  const bannerImages = [
-    {
-      id: 1,
-      img: banner1,
-    },
-    {
-      id: 2,
-      img: banner2,
-    },
-    {
-      id: 3,
-      img: banner3,
-    },
-    {
-      id: 4,
-      img: banner4,
-    },
-    {
-      id: 5,
-      img: banner5,
-    },
-    {
-      id: 6,
-      img: banner6,
-    },
-  ];
+
+  const bannerImages = [banner1, banner2, banner3, banner4, banner5, banner6];
 
   return (
     <div className="relative w-full overflow-hidden hidden md:block bg-gray-100">
@@ -70,11 +45,11 @@ const HeroBanner = () => {
       </button>
 
       <Slider ref={sliderRef} {...settings}>
-        {bannerImages.map((item) => (
-          <div key={item.id} className="w-full focus:outline-none px-4">
+        {bannerImages.map((item,index) => (
+          <div key={index} className="w-full focus:outline-none px-4">
             <img
-              src={item.img}
-              alt={item.id}
+              src={item}
+              alt={index}
               className="w-full h-auto object-cover min-h-75"
             />
           </div>

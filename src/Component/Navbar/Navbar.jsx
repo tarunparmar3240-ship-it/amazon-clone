@@ -5,17 +5,15 @@ import AuthForm from "../AuthForm/AuthForm";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-   const {token} = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const localToken = localStorage.getItem("accessToken");
-  const isLogged = token || localToken;
+  const isLogged = localToken;
 
   return (
     <div>
       <NavbarBelt />
       <NavbarBanner />
-      {!isLogged ? (
-        <AuthForm />
-      ): null}
+      {!isLogged ? <AuthForm /> : null}
     </div>
   );
 };
