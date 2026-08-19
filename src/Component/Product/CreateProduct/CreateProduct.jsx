@@ -81,14 +81,14 @@ const CreateProduct = () => {
   }
 
   // 2. Check: Image file select hui hai ya nahi
-  if (!imageFile) {
+  if (!mainImage) {
     alert("Kripya product ki image select karein!");
     return;
   }
 
   // 3. Check: Mobile photo size max 2MB hona chahiye
   const maxAllowedSize = 2 * 1024 * 1024; // 2MB in Bytes
-  if (imageFile.size > maxAllowedSize) {
+  if (mainImage.size > maxAllowedSize) {
     alert("Photo ka size 2MB se kam rakhein! High-res mobile photo mat daalein.");
     return;
   }
@@ -100,12 +100,11 @@ const CreateProduct = () => {
   data.append("price", price);
   data.append("stock", stock);
   data.append("category", categoryId);
-  data.append("mainImage", imageFile);
+  data.append("mainImage", mainImage);
 
   // Redux action dispatch
   dispatch(postProduct(data));
 };
-
 
 
 
