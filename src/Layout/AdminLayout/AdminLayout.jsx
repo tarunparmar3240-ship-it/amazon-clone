@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
   return (
-    <div className="lg:flex flex-col min-h-screen">
+    <div className="lg:flex flex-row min-h-screen">
       {/* Persistent Admin Sidebar Navigation */}
       <aside className="lg:w-60 w-full bg-[#232f3e] text-white p-5">
         <h3 className="text-lg font-bold">Admin Portal</h3>

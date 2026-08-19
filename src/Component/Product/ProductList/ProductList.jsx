@@ -25,7 +25,7 @@ const ProductList = () => {
               <img
                 src={product.mainImage?.url}
                 alt={product.name}
-                className=""
+                className="w-full h-48 object-contain"
               />
               <h3>{product.name}</h3>
               <p>Price: ₹{product.price}</p>

@@ -77,7 +77,7 @@ const CreateProduct = () => {
       {error && <p className="text-red-400">{error}</p>}
       {successMessage && <p className="text-red-400">{successMessage}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="">
         <div className="mb-4">
           <label>Product Name:</label>
           <input
@@ -86,7 +86,7 @@ const CreateProduct = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-100 p-2 border"
+            className="w-80 p-2 border"
           />
         </div>
 
@@ -97,7 +97,7 @@ const CreateProduct = () => {
             value={formData.description}
             onChange={handleChange}
             required
-            className="w-100 p-2 border"
+            className="w-80 p-2 border"
           />
         </div>
 
@@ -109,7 +109,7 @@ const CreateProduct = () => {
             value={formData.price}
             onChange={handleChange}
             required
-            className="w-100 p-2 border"
+            className="w-80 p-2 border"
           />
         </div>
 
@@ -121,7 +121,7 @@ const CreateProduct = () => {
             value={formData.stock}
             onChange={handleChange}
             required
-            className="w-100 p-2 border"
+            className="w-80 p-2 border"
           />
         </div>
 
@@ -132,7 +132,7 @@ const CreateProduct = () => {
             value={formData.category}
             onChange={handleChange}
             required
-            className="w-100 p-2 border"
+            className="w-80 p-2 border"
           >
             <option value="">-- Choose Category --</option>
             {categories.map((cat) => (
@@ -150,14 +150,14 @@ const CreateProduct = () => {
             accept="image/*"
             onChange={handleFileChange}
             required
-            className="w-100 p-2"
+            className="w-80 p-2"
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="w-100 p-2 bg-[#28a745] text-white rounded-2xl"
+          className="w-80 p-2 bg-[#28a745] text-white rounded-2xl"
         >
           {loading ? "Adding Product..." : "Add Product"}
         </button>
