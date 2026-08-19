@@ -9,7 +9,6 @@ export const getProduct = createAsyncThunk(
       const response = await api.get(
         "https://api.freeapi.app/api/v1/ecommerce/products",
       );
-      console.log("Me Hu Get Data", response);
       return response.data.data.products;
     } catch (error) {
       return rejectWithValue(error.response.data.message);
@@ -35,17 +34,10 @@ export const postProduct = createAsyncThunk(
   "product/postProduct",
   async (formData, { rejectWithValue }) => {
     try {
-      // const token = localStorage.getItem("accessToken");
       const response = await api.post(
         "https://api.freeapi.app/api/v1/ecommerce/products",
         formData,
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
-        // },
       );
-      console.log("Me Post Huu re", response);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(

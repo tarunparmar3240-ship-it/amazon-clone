@@ -1,22 +1,15 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 
-//Layouts Import
 import MainLayout from "../Layout/MainLayout/MainLayout.jsx";
 import AdminLayout from "../Layout/AdminLayout/AdminLayout.jsx";
-
-//Customer Pages Import
 import HomePage from "../Pages/Customer/HomePage/HomePage.jsx";
 import ProductDetailPage from "../Pages/Customer/ProductDetailPage/ProductDetailPage.jsx";
 import NotFoundPage from "../Component/NotFoundPage/NotFoundPage.jsx";
-
-// Admin Pages Import
-// import AdminDashboardPage from "../Pages/Admin/AdminDashboardPage";
 import AddProductPage from "../Pages/Admin/AddProductPage/AddProductPage.jsx";
 import AddCategoryPage from "../Pages/Admin/AddCategoryPage/AddCategoryPage.jsx";
 import CartProduct from "../Component/CartProduct/CartProduct.jsx";
 
-// Customer StoreFront Branch (MainLayout Wrapper)
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,11 +39,11 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        index: true, 
+        index: true,
         element: <AddCategoryPage />,
       },
       {
-        path: 'add-product',
+        path: "add-product",
         element: <AddProductPage />,
       },
     ],

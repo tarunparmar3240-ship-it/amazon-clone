@@ -27,14 +27,7 @@ export const currentUser = createAsyncThunk(
   "auth/currentUser",
   async (_, { rejectWithValue }) => {
     try {
-      // const token = localStorage.getItem("accessToken");
-      // if (!token) return rejectWithValue("No token found");
-
-      const response = await api.get(`${BASE_URL}/current-user`, {
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
-      });
+      const response = await api.get(`${BASE_URL}/current-user`);
       localStorage.setItem("username", response.data.data.username);
       return response.data.data;
     } catch (error) {
