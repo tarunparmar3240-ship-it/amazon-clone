@@ -1,7 +1,7 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
-const AdminLayout = () => { 
+const AdminLayout = () => {
   return (
     <div className="flex min-h-screen">
       {/* Persistent Admin Sidebar Navigation */}
@@ -9,10 +9,17 @@ const AdminLayout = () => {
         <h3 className="text-lg font-bold">Admin Portal</h3>
         <hr className="my-4 border-gray-600" />
         <ul className="space-y-4">
-          <li className="cursor-pointer hover:text-amber-400">Dashboard</li>
-          <li className="cursor-pointer hover:text-amber-400">Add Product</li>
-          <li className="cursor-pointer hover:text-amber-400">Add Category</li>
+          <li className="cursor-pointer hover:text-amber-400">
+            <Link to="/admin">Add Category </Link>
+          </li>
+          <li className="cursor-pointer hover:text-amber-400">
+            <Link to="/admin/add-product">Add Product</Link>
+          </li>
         </ul>
+
+        <Link to="/">
+          <button className="text-lg font-bold my-10">Back Home</button>
+        </Link>
       </aside>
 
       {/* Dynamic Admin Content Slot */}

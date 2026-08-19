@@ -25,16 +25,17 @@ const CreateCategory = () => {
 
   return (
     <div className="p-4 mb-6">
-      <h3>Add New Category</h3>
-      <form onSubmit={handleSubmit}>
+      <h3 className=" text-center text-2xl">Add New Category</h3>
+      <form onSubmit={handleSubmit} className="text-center mt-10">
         <input
           type="text"
           placeholder="Category Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          className="text-md border pr-15 rounded-l-2xl py-1 pl-3"
         />
-        <button type="submit" className="ml-3">
+        <button type="submit" className="bg-blue-400 text-md px-2 py-[4.8px] rounded-r-2xl">
           Add Category
         </button>
       </form>

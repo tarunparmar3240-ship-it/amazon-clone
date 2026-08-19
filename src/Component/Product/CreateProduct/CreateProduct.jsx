@@ -69,13 +69,15 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="max-w-125 my-5 mx-auto p-5">
-      <h2>Add New Product</h2>
+    <div className="max-w-125 my-2 mx-auto p-5">
+      <h2 className="text-center text-2xl font-semibold mb-8">
+        Add New Product
+      </h2>
       {error && <p className="text-red-400">{error}</p>}
       {successMessage && <p className="text-red-400">{successMessage}</p>}
 
       <form onSubmit={handleSubmit}>
-        <div className="mb-2">
+        <div className="mb-4">
           <label>Product Name:</label>
           <input
             type="text"
@@ -83,22 +85,22 @@ const CreateProduct = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-100 p-2"
+            className="w-100 p-2 border"
           />
         </div>
 
-        <div className="mb-10">
+        <div className="mb-4">
           <label>Description:</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
             required
-            className="w-100 p-2"
+            className="w-100 p-2 border"
           />
         </div>
 
-        <div style={{ marginBottom: "10px" }}>
+        <div className="mb-4 flex flex-col">
           <label>Price:</label>
           <input
             type="number"
@@ -106,11 +108,11 @@ const CreateProduct = () => {
             value={formData.price}
             onChange={handleChange}
             required
-            className="w-100 p-2"
+            className="w-100 p-2 border"
           />
         </div>
 
-        <div style={{ marginBottom: "10px" }}>
+        <div className="mb-2 flex flex-col">
           <label>Stock:</label>
           <input
             type="number"
@@ -118,18 +120,18 @@ const CreateProduct = () => {
             value={formData.stock}
             onChange={handleChange}
             required
-            className="w-100 p-2"
+            className="w-100 p-2 border"
           />
         </div>
 
-        <div style={{ marginBottom: "10px" }}>
+        <div className="mb-2">
           <label>Select Category:</label>
           <select
             name="category"
             value={formData.category}
             onChange={handleChange}
             required
-            className="w-100 p-2"
+            className="w-100 p-2 border"
           >
             <option value="">-- Choose Category --</option>
             {categories.map((cat) => (
@@ -154,7 +156,7 @@ const CreateProduct = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-100 p-2 bg-[#28a745] text-white"
+          className="w-100 p-2 bg-[#28a745] text-white rounded-2xl"
         >
           {loading ? "Adding Product..." : "Add Product"}
         </button>

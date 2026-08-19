@@ -12,7 +12,6 @@ import NotFoundPage from "../Component/NotFoundPage/NotFoundPage.jsx";
 
 // Admin Pages Import
 // import AdminDashboardPage from "../Pages/Admin/AdminDashboardPage";
-import AdminDashboardPage from "../Pages/Admin/AdminDashboardPage/AdminDashboardPage.jsx";
 import AddProductPage from "../Pages/Admin/AddProductPage/AddProductPage.jsx";
 import AddCategoryPage from "../Pages/Admin/AddCategoryPage/AddCategoryPage.jsx";
 import CartProduct from "../Component/CartProduct/CartProduct.jsx";
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/product/:id", //URL -> Dynamic ID route
+        path: "/product/:id", //Dynamic ID route
         element: <ProductDetailPage />,
       },
       {
@@ -47,16 +46,12 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        index: true, //URL: "/admin" hone pardashboard khulega
-        element: <AdminDashboardPage />,
-      },
-      {
-        path: "add-product", //URL: "/admin/add-product"
-        element: <AddProductPage />,
-      },
-      {
-        path: "add-category", //URL: "/admin/add-category"
+        index: true, 
         element: <AddCategoryPage />,
+      },
+      {
+        path: 'add-product',
+        element: <AddProductPage />,
       },
     ],
   },
