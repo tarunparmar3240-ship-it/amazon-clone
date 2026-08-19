@@ -34,17 +34,9 @@ export const postProduct = createAsyncThunk(
   "product/postProduct",
   async (formData, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("accessToken");
-      console.log("Token Value:", token)
       const response = await api.post(
         "https://api.freeapi.app/api/v1/ecommerce/products",
         formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        },
       );
       return response.data.data;
     } catch (error) {
