@@ -33,7 +33,7 @@ const CreateCategory = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="text-md border pr-15 rounded-l-2xl py-1 pl-3"
+          className="text-md border rounded-l-2xl py-1 pl-3"
         />
         <button type="submit" className="bg-blue-400 text-md px-2 py-[4.8px] rounded-r-2xl">
           Add Category

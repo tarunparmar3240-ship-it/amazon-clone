@@ -34,6 +34,12 @@ const NavbarBelt = () => {
             className="w-22.5 object-contain pt-1"
           />
           <span className="text-xs font-bold pt-3 -mt-1">.in</span>
+
+          <button className="mx-40 lg:hidden">
+            <Link to="/admin" className="text-xl bg-blue-500 px-4 rounded-2xl">
+              Admin
+            </Link>
+          </button>
         </div>
         {/* Location Box */}
         <div onClick={() => setIsModlaOpen(true)} className={`${boxHover}`}>
@@ -104,7 +110,9 @@ const NavbarBelt = () => {
 
         <Link to={"/cart"} className={`${boxHover}`}>
           <div className="flex items-center flex-col">
-            <span className="text-lg  text-orange-400">{items?.length || 0}</span>
+            <span className="text-lg  text-orange-400">
+              {items?.length || 0}
+            </span>
             <FaCartShopping className="-mt-1 text-xl mr-1" />
           </div>
           <p className="mt-6 text-sm font-medium">Cart</p>
