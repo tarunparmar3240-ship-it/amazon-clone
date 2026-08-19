@@ -37,36 +37,78 @@ const CreateProduct = () => {
     setFormData((prev) => ({ ...prev, mainImage: e.target.files[0] }));
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setSuccessMessage("");
+
+  //   const data = new FormData();
+  //   data.append("name", formData.name);
+  //   data.append("description", formData.description);
+  //   data.append("price", formData.price);
+  //   data.append("category", formData.category);
+  //   data.append("stock", formData.stock);
+  //   if (formData.mainImage) {
+  //     data.append("mainImage", formData.mainImage);
+  //   }
+
+  //   dispatch(postProduct(data))
+  //     .unwrap()
+  //     .then(() => {
+  //       setSuccessMessage("Product successfully created!");
+  //       dispatch(getProduct());
+  //       setFormData({
+  //         name: "",
+  //         description: "",
+  //         price: "",
+  //         category: "",
+  //         stock: "",
+  //         mainImage: null,
+  //       });
+  //     })
+  //     .catch((err) => console.error("Create Product Error:", err));
+  // };
+
+
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setSuccessMessage("");
+  e.preventDefault();
 
-    const data = new FormData();
-    data.append("name", formData.name);
-    data.append("description", formData.description);
-    data.append("price", formData.price);
-    data.append("category", formData.category);
-    data.append("stock", formData.stock);
-    if (formData.mainImage) {
-      data.append("mainImage", formData.mainImage);
-    }
+  // 1. Check: Phone par Admin Token maujood hai ya nahi
+  const token = localStorage.getItem("accessToken");
+  if (!token) {
+    alert("Phone par pehle Admin Login karein!");
+    return;
+  }
 
-    dispatch(postProduct(data))
-      .unwrap()
-      .then(() => {
-        setSuccessMessage("Product successfully created!");
-        dispatch(getProduct());
-        setFormData({
-          name: "",
-          description: "",
-          price: "",
-          category: "",
-          stock: "",
-          mainImage: null,
-        });
-      })
-      .catch((err) => console.error("Create Product Error:", err));
-  };
+  // 2. Check: Image file select hui hai ya nahi
+  if (!imageFile) {
+    alert("Kripya product ki image select karein!");
+    return;
+  }
+
+  // 3. Check: Mobile photo size max 2MB hona chahiye
+  const maxAllowedSize = 2 * 1024 * 1024; // 2MB in Bytes
+  if (imageFile.size > maxAllowedSize) {
+    alert("Photo ka size 2MB se kam rakhein! High-res mobile photo mat daalein.");
+    return;
+  }
+
+  // 4. Sab sahi hone par FormData banayein
+  const data = new FormData();
+  data.append("name", productName);
+  data.append("description", description);
+  data.append("price", price);
+  data.append("stock", stock);
+  data.append("category", categoryId);
+  data.append("mainImage", imageFile);
+
+  // Redux action dispatch
+  dispatch(postProduct(data));
+};
+
+
+
+
 
   return (
     <div className="max-w-125 my-2 mx-auto p-5">

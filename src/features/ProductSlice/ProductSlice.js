@@ -35,6 +35,7 @@ export const postProduct = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("accessToken");
+      console.log("Token Value:", token)
       const response = await api.post(
         "https://api.freeapi.app/api/v1/ecommerce/products",
         formData,
